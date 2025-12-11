@@ -24,13 +24,13 @@ jobs:
         major_pattern: "major:"
         minor_pattern: "feat:"
         format: "${major}.${minor}.${patch}-prerelease${increment}"
-        id: version
+      id: version
         
     - name: Docker login
       env:
         DOCKER_USER: ${{secrets.DOCKER_USER}}
         DOCKER_PASS: ${{secrets.DOCKER_PASS}}
-        NEW_VERSION: ${{ steps.version.outputs.version }}
+        NEW_VERSION: ${{ steps.version.outputs.version }} #::set-output name={name}::{value}
       run: |
         docker login -u $DOCKER_USER -p $DOCKER_PASS        
         echo "NEW_VERSION----------> $NEW_VERSION"
