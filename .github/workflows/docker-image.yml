@@ -21,7 +21,7 @@ jobs:
       env:
         DOCKER_USER: ${{secrets.DOCKER_USER}}
         DOCKER_PASS: ${{secrets.DOCKER_PASS}}
-      run: 
+      run: |
         echo "Inicio Login"
         docker login -u $DOCKER_USER -p $DOCKER_PASS
         echo "Fin Login"
